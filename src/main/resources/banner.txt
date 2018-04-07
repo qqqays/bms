@@ -1,0 +1,27 @@
+                          ${AnsiColor.YELLOW} _cc,
+                          '.())(((c
+                           (((((()(c
+                          '(((('${AnsiColor.WHITE}_ _${AnsiColor.YELLOW}'
+                          `(((${AnsiColor.WHITE}    \
+                           ${AnsiColor.YELLOW}(`${AnsiColor.WHITE}\   -
+                           ${AnsiColor.YELLOW}'${AnsiColor.WHITE}  )  ( __
+                          _.-'    '  `.
+                         /    ,   -'   \
+                         L     `        .
+                         \ /       `    |
+                         `${AnsiColor.BRIGHT_RED}c${AnsiColor.WHITE}   )  ${AnsiColor.BRIGHT_RED}c  ${AnsiColor.WHITE})   J
+                         .\__. `---':   |
+                         \__  \,    |   L
+                          /`\\\>    L  |
+                         /         /  J
+                         L c      '  /
+                         \       /  /\
+                          \-.__.' .'  .
+                          |`-___.'
+                          :  `8P      /
+                          :  .'      /
+                          ` /      .'
+                           /     .'
+                          .    .'
+                          L   '
+                          \`  `  '
