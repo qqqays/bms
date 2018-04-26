@@ -33,7 +33,7 @@ public class MybatisTest {
     @Rollback
     public void fuck() {
         System.out.println("------------------------------");
-        System.out.println(tm.one().getId() + tm.one().getContents());
+//        System.out.println(tm.one().getId() + tm.one().getContents());
         System.out.println("------------------------------");
     }
 
@@ -41,7 +41,7 @@ public class MybatisTest {
     public void aa() {
         for (JpaTestEntity jte : tm.all()) {
             System.out.println();
-            System.out.println(jte.getId() + jte.getContents());
+//            System.out.println(jte.getId() + jte.getContents());
             System.out.println();
         }
     }
