@@ -13,5 +13,5 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     open-in-view: false
 
-#  freemarker:
-#    check-template-location: false
+  freemarker:
+    check-template-location: false
