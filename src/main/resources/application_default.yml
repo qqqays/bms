@@ -5,13 +5,34 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/bms?characterEncoding=utf8&useSSL=true&zeroDateTimeBehavior=convertToNull
     username: root
-    password:
+    password: qays
+
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     open-in-view: false
+    properties:
+      hibernate:
+        show_sql: true
 
-  freemarker:
-    check-template-location: false
+  redis:
+    host: localhost
+    port: 6379
+    password: 123
+
+  cache:
+    ehcache:
+      config: classpath:config/ehcache.xml
+
+#  freemarker:
+#    check-template-location: false
+
+server:
+  port: 8080
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
