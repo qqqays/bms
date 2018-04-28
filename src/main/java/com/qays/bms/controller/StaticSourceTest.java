@@ -11,12 +11,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * 04-28-2018 11:40 AM
  */
 @Controller
-@RequestMapping("/js")
 public class StaticSourceTest {
 
-    @RequestMapping("{abc}")
+    @RequestMapping("{ab}/{abc}")
     @ResponseBody
     public String abc(@PathVariable String abc) {
         return abc;
     }
+
+    @RequestMapping("{ab}/{abc}/{aaa}")
+    @ResponseBody
+    public String ccc(@PathVariable String ab, @PathVariable String abc, @PathVariable String aaa) {
+
+        return ab + abc + aaa;
+
+    }
+
 }
