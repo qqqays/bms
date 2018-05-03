@@ -55,4 +55,13 @@ public class MybatisTest {
         System.out.println(page);
     }
 
+    @Test
+    public void mixResult() {
+        PageHelper.startPage(1, 4);
+
+        PageInfo<Map> page = new PageInfo<>(tm.mixResult());
+
+        System.out.println(page);
+    }
+
 }

@@ -25,4 +25,7 @@ public interface TestMapper {
 
     @Select("select * from test_table")
     List<JpaTestEntity> page();
+
+    @Select("select a.*, b.contents from add_table as a join test_table as b")
+    List<Map> mixResult();
 }
