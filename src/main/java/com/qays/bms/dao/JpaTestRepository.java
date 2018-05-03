@@ -1,14 +1,11 @@
-package com.qays.bms.repository;
+package com.qays.bms.dao;
 
 import com.qays.bms.domain.JpaTestEntity;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Created by Q-ays.

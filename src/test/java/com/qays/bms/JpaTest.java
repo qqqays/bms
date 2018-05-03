@@ -1,7 +1,7 @@
 package com.qays.bms;
 
 import com.qays.bms.domain.JpaTestEntity;
-import com.qays.bms.repository.JpaTestRepository;
+import com.qays.bms.dao.JpaTestRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -2,9 +2,8 @@ package com.qays.bms.controller;
 
 import com.qays.bms.domain.JpaTestEntity;
 import com.qays.bms.group.TestGroup;
-import com.qays.bms.repository.AddRepository;
-import com.qays.bms.repository.JpaTestRepository;
-import io.swagger.annotations.Api;
+import com.qays.bms.dao.AddRepository;
+import com.qays.bms.dao.JpaTestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

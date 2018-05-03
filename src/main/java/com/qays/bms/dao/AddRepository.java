@@ -1,4 +1,4 @@
-package com.qays.bms.repository;
+package com.qays.bms.dao;
 
 import com.qays.bms.domain.AddEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
