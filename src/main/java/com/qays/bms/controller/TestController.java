@@ -2,6 +2,7 @@ package com.qays.bms.controller;
 
 import com.qays.bms.domain.JpaTestEntity;
 import com.qays.bms.group.TestGroup;
+import com.qays.bms.repository.AddRepository;
 import com.qays.bms.repository.JpaTestRepository;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class TestController {
 
     @Autowired
     JpaTestRepository jtr;
+
+    @Autowired
+    AddRepository ar;
 
     @GetMapping("/hello")
     public String hello(){
@@ -48,6 +52,7 @@ public class TestController {
     @ResponseBody
     public String multiple(TestGroup tg) {
         jtr.save(tg.getJte());
+        ar.save(tg.getAe());
         return "cc";
     }
 }
