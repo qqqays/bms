@@ -7,6 +7,7 @@ spring:
     username: root
     password: 1234
 
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -26,8 +27,14 @@ spring:
   cache:
     ehcache:
       config: classpath:config/ehcache.xml
-  jooq:
-    sql-dialect:
+
+  servlet:
+    multipart:
+      location: e:/
+
+  resources:
+    static-locations: file:${spring.servlet.multipart.location}, classpath:static
+
 
 #  freemarker:
 #    check-template-location: false
