@@ -13,7 +13,7 @@ import org.springframework.scheduling.quartz.SchedulerFactoryBean;
  * whosqays@gmail.com
  * 04-26-2018 9:53
  */
-@Configuration
+//@Configuration
 public class Quartz {
 
     /**

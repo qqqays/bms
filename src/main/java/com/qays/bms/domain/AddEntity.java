@@ -5,13 +5,13 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 /**
- * Created by Q-ays.
+ * Created by Q-ays
  * whosqays@gmail.com
- * 04-07-2018 13:52
+ * 05-03-2018 10:45
  */
 @Entity
-@Table(name = "test_table")
-public class JpaTestEntity {
+@Table(name = "add_table")
+public class AddEntity {
 
     @Id
     @GenericGenerator(name = "uuid", strategy = "uuid")
@@ -19,7 +19,7 @@ public class JpaTestEntity {
     String id;
 
     @Basic
-    String contents;
+    String body;
 
     public String getId() {
         return id;
@@ -29,11 +29,11 @@ public class JpaTestEntity {
         this.id = id;
     }
 
-    public String getContents() {
-        return contents;
+    public String getBody() {
+        return body;
     }
 
-    public void setContents(String contents) {
-        this.contents = contents;
+    public void setBody(String body) {
+        this.body = body;
     }
 }
