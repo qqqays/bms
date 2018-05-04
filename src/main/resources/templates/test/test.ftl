@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <#--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
-    <script src="/js/jquery.min.js"></script>
+    <#include "/common/head.ftl"/>
 </head>
 <body>
 <h2>fk aa cd dad das c</h2>
 
 <form>
     <input type="file" required="required" id="img-upload">
-    <button type="button" id="upload">upload</button>
+    <button type="button" id="upload" class="btn btn-danger">upload</button>
 </form>
 
 <img src="" id="show">
