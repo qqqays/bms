@@ -16,7 +16,7 @@
 
 <img src="" id="show">
 
-<script src="/js/vue.js"></script>
+<#include "/common/js.ftl"/>
 <script>
     function generalAjax4img(formData, class1, showId) {
         var url = '/uploads';

@@ -8,7 +8,7 @@
 <!--wow-->
 <#--<script src="/app/js/wow.min.js"></script>-->
 <!-- AdminLTE App -->
-<#--<script src="/js/adminlte.js"></script>-->
+<script src="/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
 <#--<script src="/app/js/demo.js"></script>-->
 <!--custom-->
@@ -16,3 +16,6 @@
 <!--jump words-->
 <#--<script src="/plugins/jump-words/jquery.bumpytext.packed.js"></script>-->
 <#--<script src="/plugins/jump-words/easying.js"></script>-->
+<#--vue js-->
+<script src="/js/vue.js"></script>
+
