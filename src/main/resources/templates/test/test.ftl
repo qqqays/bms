@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <#--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
+    <script src="/js/jquery.min.js"></script>
 </head>
 <body>
 <h2>fk aa cd dad das c</h2>
@@ -14,6 +15,8 @@
 </form>
 
 <img src="" id="show">
+
+<script src="/js/vue.js"></script>
 <script>
     function generalAjax4img(formData, class1, showId) {
         var url = '/uploads';

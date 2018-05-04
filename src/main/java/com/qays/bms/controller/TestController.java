@@ -26,16 +26,9 @@ public class TestController {
     @Autowired
     AddRepository ar;
 
-    @GetMapping("/hello")
-    public String hello(){
-
-        return "test";
-    }
-
-    @GetMapping("/test1")
-    @ResponseBody
+    @GetMapping("/test")
     public String test(){
-        return "test";
+        return "test/test";
     }
 
     @PostMapping("/singleEntity")
