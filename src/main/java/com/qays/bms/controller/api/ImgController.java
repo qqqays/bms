@@ -17,6 +17,4 @@ public class ImgController {
     public String aa() {
         return "success";
     }
-
-
 }

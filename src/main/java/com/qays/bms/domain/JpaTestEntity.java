@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class JpaTestEntity {
 
     @Id
-    @GenericGenerator(name = "uuid", strategy = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     @GeneratedValue(generator = "uuid")
     String id;
 

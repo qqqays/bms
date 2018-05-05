@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class AddEntity {
 
     @Id
-    @GenericGenerator(name = "uuid", strategy = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     @GeneratedValue(generator = "uuid")
     String id;
 
