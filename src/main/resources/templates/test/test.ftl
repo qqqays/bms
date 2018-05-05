@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <#--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
-    <#include "/common/head.ftl"/>
+    <#include "/plot/head.ftl"/>
 </head>
 <body>
 <h2>fk aa cd dad das c</h2>
@@ -16,7 +16,7 @@
 
 <img src="" id="show">
 
-<#include "/common/js.ftl"/>
+<#include "/plot/js.ftl"/>
 <script>
     function generalAjax4img(formData, class1, showId) {
         var url = '/uploads';

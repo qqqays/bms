@@ -31,6 +31,11 @@ public class TestController {
         return "test/test";
     }
 
+    @GetMapping("/test4l")
+    public String test4l() {
+        return "test/test4l";
+    }
+
     @PostMapping("/singleEntity")
     @ResponseBody
     public String single(JpaTestEntity jte) {
