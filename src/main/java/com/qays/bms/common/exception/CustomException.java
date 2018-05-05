@@ -12,7 +12,7 @@ public class CustomException extends RuntimeException {
 
     private ReturnCode rc;
 
-    CustomException(ReturnCode rc) {
+    public CustomException(ReturnCode rc) {
         super();
         this.rc = rc;
     }

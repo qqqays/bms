@@ -13,7 +13,9 @@ public enum ReturnCode {
     UNMATCHED_METHOD(-3, "No method matched error"),
     VALID_ERROR(-4, "The param verification failed"),
     PRINCIPAL_NOT_FIND(-5, "Can not find the user information in session!"),
-    PASSWORD_ERROR(-6, "Password incorrect");
+    PASSWORD_ERROR(-6, "Password incorrect"),
+    EXECUTE_ERROR(-7,"Executed failed"),
+    UNMATCHED_SYSTEM(-8,"Can not match the system initialed");
 
     private Integer code;
 
