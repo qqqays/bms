@@ -55,7 +55,7 @@ public class TestController {
 
     @PostMapping("/uploads")
     @ResponseBody
-    public String uploads(MultipartFile[] files) {
+    public String uploads(@RequestParam("files") MultipartFile[] files) {
         try {
             if (files != null)
                 if (files.length > 0) {
