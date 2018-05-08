@@ -20,9 +20,6 @@ public class ImgEntity {
     private String name;
 
     @Basic
-    private String originName;
-
-    @Basic
     private String alt;
 
     @Basic
@@ -66,14 +63,6 @@ public class ImgEntity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getOriginName() {
-        return originName;
-    }
-
-    public void setOriginName(String originName) {
-        this.originName = originName;
     }
 
     public String getAlt() {

@@ -51,7 +51,7 @@ public class ImgController {
 
         ImgEntity ie = new ImgEntity();
 
-        ie.setOriginName(originName);
+        ie.setName(originName);
         ie.setRelativePath(relationPath);
         ie.setAbsolutePath(absolutionPath);
         ie.setAlt(alt);
