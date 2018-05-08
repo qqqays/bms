@@ -86,8 +86,9 @@ public class ImgController implements AuxApi{
             @PathVariable String content,
             @RequestParam MultipartFile[] files
     ) {
-        String absolutionPath = jointPath(location , content);
-        String relationPath = jointPath("", content);
+        String typePath = jointPath("/uploads", content);
+        String absolutionPath = jointPath(location , typePath);
+        String relationPath = jointPath("", typePath);
 
         JSONArray jsonArray = new JSONArray();
 
