@@ -5,6 +5,7 @@ import com.qays.bms.domain.ImgEntity;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.ClassUtils;
@@ -25,6 +26,9 @@ public class PathTest {
 
     @Autowired
     ImgRepository imgRepository;
+
+    @Value("${spring.servlet.multipart.location}")
+    private String location;
 
     public static void listFile(String path, List<String> list) {
         File dir = new File(path);
@@ -48,17 +52,7 @@ public class PathTest {
         System.out.println();
         String path = ClassUtils.getDefaultClassLoader().getResource("static/image").getPath().substring(1);
 
-//        File dir = new File(path);
         List<String> list = new ArrayList<>();
-//
-//
-//        if (dir.exists()) {
-//            for(File file:dir.listFiles()){
-//                if (file.isFile()) {
-//                    list.add(file.toString());
-//                }
-//            }
-//        }
 
         listFile(path, list);
 
@@ -92,5 +86,10 @@ public class PathTest {
                 imgRepository.save(ie);
             }
         }
+    }
+
+    @Test
+    public void location() {
+        System.out.println(location);
     }
 }

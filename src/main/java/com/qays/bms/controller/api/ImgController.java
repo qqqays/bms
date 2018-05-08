@@ -2,13 +2,14 @@ package com.qays.bms.controller.api;
 
 import com.qays.bms.common.enums.ReturnCode;
 import com.qays.bms.common.exception.CustomException;
+import com.qays.bms.common.util.FileUtil;
 import com.qays.bms.dao.ImgRepository;
 import com.qays.bms.domain.ImgEntity;
+import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.ClassUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.WebUtils;
 
@@ -24,10 +25,13 @@ import java.io.IOException;
  */
 @RestController
 @RequestMapping("/api/images")
-public class ImgController {
+public class ImgController implements AuxApi{
 
     @Autowired
     private ImgRepository imgRepository;
+
+    @Value("${spring.servlet.multipart.location}")
+    private String location;
 
     @GetMapping("test")
     public String aa(HttpServletRequest request) throws NullPointerException {
@@ -45,13 +49,14 @@ public class ImgController {
                           String class1,
                           MultipartFile file) {
 
-        String originName = file.getOriginalFilename();
-        String imgRelationPath = relationPath + originName;
-        String imgAbsolutionPath = absolutionPath + originName;
+        String name = file.getOriginalFilename();
+        String imgRelationPath = jointPath(relationPath,name);
+        String imgAbsolutionPath = jointPath(absolutionPath,name);
 
         ImgEntity ie = new ImgEntity();
 
-        ie.setName(originName);
+        ie.setId(imgRelationPath);
+        ie.setName(name);
         ie.setRelativePath(relationPath);
         ie.setAbsolutePath(absolutionPath);
         ie.setAlt(alt);
@@ -72,4 +77,31 @@ public class ImgController {
         throw new CustomException(ReturnCode.EXECUTE_ERROR);
     }
 
+    @PostMapping("{content}")
+    public String postImg(
+            @RequestParam(defaultValue = "") String alt,
+            @RequestParam(defaultValue = "") String title,
+            @RequestParam(defaultValue = "0") Integer width,
+            @RequestParam(defaultValue = "0") Integer height,
+            @PathVariable String content,
+            @RequestParam MultipartFile[] files
+    ) {
+        String absolutionPath = jointPath(location , content);
+        String relationPath = jointPath("", content);
+
+        JSONArray jsonArray = new JSONArray();
+
+        try {
+            if (files != null)
+                if (files.length > 0) {
+                    for (MultipartFile file : files) {
+                        jsonArray.put(addImg(relationPath, absolutionPath, alt, title, width, height, content, file));
+                    }
+                }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return jsonArray.toString();
+    }
 }
