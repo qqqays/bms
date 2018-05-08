@@ -81,14 +81,16 @@ public class PathTest {
 //            System.out.println(s.substring(s.lastIndexOf("/") + 1));
 //            System.out.println(s.substring(0, s.lastIndexOf("/")));
 //            System.out.println(s.substring(sPath.length(),s.lastIndexOf("/")));
-            ImgEntity ie = new ImgEntity();
-            ie.setId(s.substring(sPath.length()));
-            ie.setUrl(s.substring(sPath.length()));
-            ie.setName(s.substring(s.lastIndexOf("/") + 1));
-            ie.setAbsolutePath(s.substring(0, s.lastIndexOf("/")));
-            ie.setRelativePath(s.substring(sPath.length(), s.lastIndexOf("/")));
-            ie.setClass1("system");
-            imgRepository.save(ie);
+            if (!imgRepository.existsById(s.substring(sPath.length()))) {
+                ImgEntity ie = new ImgEntity();
+                ie.setId(s.substring(sPath.length()));
+                ie.setUrl(s.substring(sPath.length()));
+                ie.setName(s.substring(s.lastIndexOf("/") + 1));
+                ie.setAbsolutePath(s.substring(0, s.lastIndexOf("/")));
+                ie.setRelativePath(s.substring(sPath.length(), s.lastIndexOf("/")));
+                ie.setClass1("system");
+                imgRepository.save(ie);
+            }
         }
     }
 }
