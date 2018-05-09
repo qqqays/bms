@@ -14,9 +14,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.WebUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.transaction.Transactional;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Optional;
 
 /**
  * Created by Q-ays
@@ -106,5 +108,20 @@ public class ImgController implements AuxApi {
         }
 
         return jsonArray.toString();
+    }
+
+    @PutMapping()
+    @Transactional
+    public String updateImg(@RequestParam String id, @RequestParam String alt, @RequestParam String title) {
+        Optional<ImgEntity> o = imgRepository.findById(id);
+
+        ImgEntity ie = o.get();
+
+        ie.setAlt(alt);
+        ie.setTitle(title);
+
+        imgRepository.save(ie);
+
+        return code(ReturnCode.SUCCESS);
     }
 }

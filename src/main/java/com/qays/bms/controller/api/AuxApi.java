@@ -1,6 +1,8 @@
 package com.qays.bms.controller.api;
 
+import com.qays.bms.common.enums.ReturnCode;
 import com.qays.bms.common.util.FileUtil;
+import com.qays.bms.common.util.O2JUtil;
 
 /**
  * Created by Q-ays
@@ -11,6 +13,9 @@ import com.qays.bms.common.util.FileUtil;
 public interface AuxApi {
     default String jointPath(String head, String tail) {
         return FileUtil.joint(head, tail);
+    }
 
+    default String code(ReturnCode rc) {
+        return O2JUtil.dataAndCode(rc);
     }
 }
