@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.ClassUtils;
-import org.springframework.util.StringUtils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -69,7 +68,7 @@ public class PathTest {
 //        System.out.println(path.substring(sPath.length()));
 
         List<String> list = new ArrayList<>();
-        listFile(path,list);
+        listFile(path, list);
         for (String s : list) {
 //            System.out.println(s.substring(sPath.length()));
 //            System.out.println(s.substring(s.lastIndexOf("/") + 1));
