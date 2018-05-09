@@ -36,8 +36,8 @@ public class ImgController implements AuxApi {
     }
 
     @PostMapping("/ckEditor")
-    public void ckEditor(HttpServletRequest request, HttpServletResponse response) {
-        imgService.postImg4ck(request, response);
+    public void ckEditor(HttpServletRequest request, HttpServletResponse response, @RequestParam MultipartFile[] upload) {
+        imgService.postImg4ck(request, response, upload);
     }
 
     @PutMapping()

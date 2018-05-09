@@ -104,30 +104,22 @@ public class ImgService implements AuxService, SKTUtil {
         return code(ReturnCode.SUCCESS, jsonArray);
     }
 
-    public void postImg4ck(HttpServletRequest request, HttpServletResponse response) {
+    public void postImg4ck(HttpServletRequest request, HttpServletResponse response, MultipartFile[] files) {
 
-        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
+        String typePath = jointPath("/uploads", "ckEditor");
+        String absolutionPath = jointPath(location, typePath);
+        String relationPath = jointPath("", typePath);
 
-        if (multipartResolver.isMultipart(request)) {
-
-            String typePath = jointPath("/uploads", "ckEditor");
-            String absolutionPath = jointPath(location, typePath);
-            String relationPath = jointPath("", typePath);
-
-            MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
-            Iterator<String> it = multiRequest.getFileNames();
-
-            try {
-                while (it.hasNext()) {
-                    MultipartFile file = multiRequest.getFile(it.next());
-
-                    addImg(relationPath, absolutionPath, "", "", 0, 0, "ckEditor", file);
-                    imgUrl4CK(request, response, jointPath(relationPath, file.getOriginalFilename()), false);
+        try {
+            if (files != null)
+                if (files.length > 0) {
+                    for (MultipartFile file : files) {
+                        addImg(relationPath, absolutionPath, "", "", 0, 0, "ckEditor", file);
+                        imgUrl4CK(request, response, jointPath(relationPath, file.getOriginalFilename()), false);
+                    }
                 }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
