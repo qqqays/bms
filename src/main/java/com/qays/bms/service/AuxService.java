@@ -22,4 +22,8 @@ public interface AuxService {
     default String code(ReturnCode rc, Object o) {
         return O2JUtil.dataAndCode(rc, o);
     }
+
+    default boolean checkDir(String path) {
+        return FileUtil.checkDir(path);
+    }
 }

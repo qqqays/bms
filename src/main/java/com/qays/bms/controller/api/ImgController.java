@@ -1,15 +1,13 @@
 package com.qays.bms.controller.api;
 
 import com.qays.bms.service.ImgService;
+import io.swagger.annotations.ApiImplicitParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Iterator;
 
 /**
  * Created by Q-ays
@@ -57,6 +55,7 @@ public class ImgController implements AuxApi {
      * @return one page of image table
      */
     @GetMapping("")
+    @ApiImplicitParam(name = "s")
     public String acquireAllImg(
             @RequestParam(defaultValue = "0") Integer pn,
             @RequestParam(defaultValue = "15") Integer ps,
@@ -74,6 +73,7 @@ public class ImgController implements AuxApi {
      * @return page of image table
      */
     @GetMapping("{content}")
+    @ApiImplicitParam(name = "s")
     public String acquireImg(
             @RequestParam(defaultValue = "0") Integer pn,
             @RequestParam(defaultValue = "15") Integer ps,

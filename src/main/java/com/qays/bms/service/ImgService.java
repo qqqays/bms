@@ -9,21 +9,16 @@ import com.qays.bms.dao.ImgRepository;
 import com.qays.bms.domain.ImgEntity;
 import com.qays.bms.mapper.ImgMapper;
 import org.json.JSONArray;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.Optional;
 
 /**
