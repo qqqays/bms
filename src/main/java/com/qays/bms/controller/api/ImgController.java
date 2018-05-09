@@ -65,6 +65,24 @@ public class ImgController implements AuxApi {
         return imgService.acquireAllImg(pn, ps, s);
     }
 
+    /**
+     *
+     * @param pn page number
+     * @param ps page size
+     * @param s search
+     * @param content class of images
+     * @return page of image table
+     */
+    @GetMapping("{content}")
+    public String acquireImg(
+            @RequestParam(defaultValue = "0") Integer pn,
+            @RequestParam(defaultValue = "15") Integer ps,
+            @RequestParam(defaultValue = "") String s,
+            @PathVariable String content
+    ) {
+        return imgService.acquireImg(pn, ps, s, content);
+    }
+
     @GetMapping("single")
     public String gainImg(@RequestParam String id) {
         return imgService.gainImgById(id);
@@ -72,6 +90,6 @@ public class ImgController implements AuxApi {
 
     @GetMapping("ck")
     public void path4ck(HttpServletRequest request, HttpServletResponse response, @RequestParam("imgPath") String imgPath) {
-        imgService.path4ck(request,response,imgPath);
+        imgService.path4ck(request, response, imgPath);
     }
 }

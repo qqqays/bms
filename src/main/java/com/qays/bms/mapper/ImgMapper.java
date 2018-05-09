@@ -16,4 +16,7 @@ import java.util.List;
 public interface ImgMapper {
     @Select("select * from image where name like '%${s}%'")
     List<ImgEntity> allImg(@Param("s") String s);
+
+    @Select("select * from image where name like '%${s}%' and class1 = #{type}")
+    List<ImgEntity> typeOfImg(@Param("s") String s, @Param("type") String type);
 }

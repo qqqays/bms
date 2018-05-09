@@ -176,6 +176,14 @@ public class ImgService implements AuxService, SKTUtil {
         return code(ReturnCode.SUCCESS, page);
     }
 
+    public String acquireImg(Integer pageNum, Integer pageSize, String search, String type) {
+        PageHelper.startPage(pageNum, pageSize);
+
+        PageInfo<ImgEntity> page = new PageInfo<>(imgMapper.typeOfImg(search, type));
+
+        return code(ReturnCode.SUCCESS, page);
+    }
+
     public String gainImgById(String id) {
         Optional<ImgEntity> o = imgRepository.findById(id);
 
