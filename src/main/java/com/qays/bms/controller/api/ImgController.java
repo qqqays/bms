@@ -25,7 +25,7 @@ import java.io.IOException;
  */
 @RestController
 @RequestMapping("/api/images")
-public class ImgController implements AuxApi{
+public class ImgController implements AuxApi {
 
     @Autowired
     private ImgRepository imgRepository;
@@ -40,18 +40,20 @@ public class ImgController implements AuxApi{
         return ClassUtils.getDefaultClassLoader().getResource("static/image").getPath().substring(1);
     }
 
-    private String addImg(String relationPath,
-                          String absolutionPath,
-                          String alt,
-                          String title,
-                          Integer width,
-                          Integer height,
-                          String class1,
-                          MultipartFile file) {
+    private String addImg(
+            String relationPath,
+            String absolutionPath,
+            String alt,
+            String title,
+            Integer width,
+            Integer height,
+            String class1,
+            MultipartFile file
+    ) {
 
         String name = file.getOriginalFilename();
-        String imgRelationPath = jointPath(relationPath,name);
-        String imgAbsolutionPath = jointPath(absolutionPath,name);
+        String imgRelationPath = jointPath(relationPath, name);
+        String imgAbsolutionPath = jointPath(absolutionPath, name);
 
         ImgEntity ie = new ImgEntity();
 
@@ -87,7 +89,7 @@ public class ImgController implements AuxApi{
             @RequestParam MultipartFile[] files
     ) {
         String typePath = jointPath("/uploads", content);
-        String absolutionPath = jointPath(location , typePath);
+        String absolutionPath = jointPath(location, typePath);
         String relationPath = jointPath("", typePath);
 
         JSONArray jsonArray = new JSONArray();

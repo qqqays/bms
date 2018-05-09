@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 50722
  Source Host           : localhost:3306
- Source Schema         : bms2
+ Source Schema         : bms
 
  Target Server Type    : MySQL
  Target Server Version : 50722
  File Encoding         : 65001
 
- Date: 03/05/2018 13:54:57
+ Date: 09/05/2018 08:44:23
 */
 
 SET NAMES utf8mb4;
@@ -62,7 +62,7 @@ CREATE TABLE `article`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `dic_item`;
 CREATE TABLE `dic_item`  (
-  `id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `id` int(11) NOT NULL,
   `type_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `value` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -74,7 +74,12 @@ CREATE TABLE `dic_item`  (
 -- ----------------------------
 -- Records of dic_item
 -- ----------------------------
-INSERT INTO `dic_item` VALUES ('industry', 'article', 'industry', '1', NULL, NULL);
+INSERT INTO `dic_item` VALUES (1, 'article', 'industry', 'industry', 2, NULL);
+INSERT INTO `dic_item` VALUES (1001, 'image', NULL, 'system', 1, NULL);
+INSERT INTO `dic_item` VALUES (1002, 'image', NULL, 'ckeditor', 2, '');
+INSERT INTO `dic_item` VALUES (1003, 'image', NULL, 'default', 3, NULL);
+INSERT INTO `dic_item` VALUES (2001, 'menu', NULL, 'index', 0, 'index of page');
+INSERT INTO `dic_item` VALUES (2002, 'menu', NULL, 'about', 1, NULL);
 
 -- ----------------------------
 -- Table structure for dic_type
@@ -91,11 +96,11 @@ CREATE TABLE `dic_type`  (
 -- ----------------------------
 -- Records of dic_type
 -- ----------------------------
-INSERT INTO `dic_type` VALUES ('article', NULL, NULL, 'for news');
-INSERT INTO `dic_type` VALUES ('image', NULL, NULL, NULL);
-INSERT INTO `dic_type` VALUES ('menu', NULL, NULL, NULL);
-INSERT INTO `dic_type` VALUES ('product', NULL, NULL, NULL);
-INSERT INTO `dic_type` VALUES ('project', NULL, NULL, NULL);
+INSERT INTO `dic_type` VALUES ('article', 'article', NULL, '0 - 999');
+INSERT INTO `dic_type` VALUES ('image', 'image', NULL, '1000 - 1999');
+INSERT INTO `dic_type` VALUES ('menu', 'menu', NULL, '2000 - 2999');
+INSERT INTO `dic_type` VALUES ('product', 'product', NULL, '3000 - 3999');
+INSERT INTO `dic_type` VALUES ('project', 'project', NULL, '4000 - 4999');
 
 -- ----------------------------
 -- Table structure for global
@@ -137,19 +142,18 @@ CREATE TABLE `hibernate_sequence`  (
 INSERT INTO `hibernate_sequence` VALUES (1);
 
 -- ----------------------------
--- Table structure for images
+-- Table structure for image
 -- ----------------------------
-DROP TABLE IF EXISTS `images`;
-CREATE TABLE `images`  (
+DROP TABLE IF EXISTS `image`;
+CREATE TABLE `image`  (
   `id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `originName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `alt` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `relative_path` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `absolute_path` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `relativePath` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `absolutePath` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '',
   `height` int(11) NULL DEFAULT NULL,
   `width` int(11) NULL DEFAULT NULL,
   `class1` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -159,53 +163,12 @@ CREATE TABLE `images`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of images
+-- Records of image
 -- ----------------------------
-INSERT INTO `images` VALUES ('042a026184a547dca663399f7b395f44', NULL, 'android-hand.png', 'ea', 'dfas', '/upload-files//images/system/android-hand.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 0, 0, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('08410b4865124d08ad6661717fcf8b3b', NULL, 'android-social-user.png', '', '', '/upload-files//images/system/android-social-user.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 0, 0, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('098bf1e164984cc3b9c651d62721f1a2', NULL, 'android-storage.png', '', '', '/upload-files//images/product/android-storage.png', NULL, '/upload-files//images/product/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/product/', 512, 512, 'product', NULL, NULL);
-INSERT INTO `images` VALUES ('0f2a1426f2ca4f0488d64340b3759182', NULL, 'logo.png', 'good', 'morning', '/upload-files//images/system/logo.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 0, 0, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('11088058f0a347ac8091cea5c976f3ae', NULL, 'QQ??20170919163710.jpg', 'what', 'the', '/upload-files//images/system/QQ??20170919163710.jpg', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 0, 0, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('1991caac9447455385ea2e86eb2a52d3', NULL, 'beaker.png', '', '', '/upload-files//images/system/beaker.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 0, 0, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('21a7f5238ca44042b1644814cfa5e459', NULL, 'android-chat.png', '', '', '/upload-files//images/system/android-chat.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 0, 0, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('242d153b133b47308c7be00c65328970', NULL, 'android-developer.png', '', '', '/upload-files//images/system/android-developer.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 0, 0, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('25ff22a14e794d55a46f7f4902f23d11', NULL, 'android-dropdown.png', '', '', '/upload-files//images/info/android-dropdown.png', NULL, '/upload-files//images/info/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/info/', 512, 512, 'info', NULL, NULL);
-INSERT INTO `images` VALUES ('29440fab063944ad880b87eff58a12a3', NULL, 'xbox.png', '', '', '/upload-files//images/system/xbox.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 0, 0, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('2bf63f76863c4261bc6d492e9ad7f840', NULL, 'ccccc.png', '', '', '/upload-files/images/ckEditor/ccccc.png', NULL, '/upload-files/images/ckEditor/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files/images/ckEditor/', 0, 0, 'ckEditor', NULL, NULL);
-INSERT INTO `images` VALUES ('41dabcca651f4016876b6612a0c5f239', NULL, 'android-display.png', '', '', '/upload-files//images/system/android-display.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 0, 0, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('45d0973da464435181e291cbba50078b', NULL, 'android-data.png', '', '', '/upload-files//images/system/android-data.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 0, 0, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('46e98410248e430d9559243012010ca8', NULL, 'alert.png', '', '', '/upload-files//images/ckEditor/alert.png', NULL, '/upload-files//images/ckEditor/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/ckEditor/', 0, 0, 'ckEditor', NULL, NULL);
-INSERT INTO `images` VALUES ('491039a307854ee0ad2878705f4c1031', NULL, 'android-camera.png', '', '', '/upload-files//images/system/android-camera.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 512, 512, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('4ad76f41314545a59a0b414de8c55fa9', NULL, '0.jpg', '', '', '/upload-files/images/ckEditor/0.jpg', NULL, '/upload-files/images/ckEditor/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files/images/ckEditor/', 0, 0, 'ckEditor', NULL, NULL);
-INSERT INTO `images` VALUES ('5d4fa0e897aa4696b56c6ef8ce81b9df', NULL, 'android-add-contact.png', '', '', '/upload-files//images/system/android-add-contact.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 0, 0, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('63dd9ec756fa4d998e00e2aa7186674e', NULL, '00368.jpg', 'good', 'morning', '/upload-files//images/system/00368.jpg', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 0, 0, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('6ba37980da3044f0ac433163a281a1b0', NULL, 'android-lightbulb.png', '', '', '/upload-files//images/system/android-lightbulb.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 512, 512, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('7bb6b1d0b8bb44d2bfafea57681d929a', NULL, 'android-location.png', '', '', '/upload-files//images/system/android-location.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 0, 0, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('7d7bb9aa6bbb4614ba31ec015c2765a4', NULL, 'android-send.png', '', '', '/upload-files//images/other/android-send.png', NULL, '/upload-files//images/other/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/other/', 512, 512, 'other', NULL, NULL);
-INSERT INTO `images` VALUES ('7f2440f3896d42d0b8bf977e843e9930', NULL, 'android-search.png', '???', '??? ', '/upload-files//images/system/android-search.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 512, 512, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('808a211999c84cecb6ed206888a50791', NULL, 'alert-circled.png', '', '', '/upload-files//images/system/alert-circled.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 512, 512, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('845778fec53646dcab82ba6495388c51', NULL, 'android-archive.png', '', '', '/upload-files//images/system/android-archive.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 0, 0, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('8ad72a3e245f42fc9cded397a1d114bb', NULL, 'android-call.png', '', '', '/upload-files//images/system/android-call.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 512, 512, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('91f17c32fae046788e2b61bbb8e2b37e', NULL, 'android-add.png', '', '', '/upload-files//images/system/android-add.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 0, 0, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('968074f2fc984327adc251e80d858310', NULL, 'android-arrow-forward.png', '', '', '/upload-files//images/system/android-arrow-forward.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 0, 0, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('970f5eb2283549dbb771c388a0e04304', NULL, 'android-forums.png', '??', '??', '/upload-files//images/system/android-forums.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 0, 0, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('9836ff5b9ae244ae894e3d27f63156fc', NULL, 'icon-social-google-plus.png', 'what', 'the', '/upload-files//images/system/icon-social-google-plus.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 0, 0, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('9b090dd13094449f95414904b87f192f', NULL, 'android-sort.png', '', '', '/upload-files/images/system/android-sort.png', NULL, '/upload-files/images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files/images/system/', 512, 512, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('a4264e076c074880aadc0c3ecb281f0e', NULL, 'android-friends.png', '', '', '/upload-files//images/system/android-friends.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 0, 0, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('a6d61e6d6cd9432a86eab9c192a67ffb', NULL, 'android-keypad.png', '', '', '/upload-files//images/system/android-keypad.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 512, 512, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('a9bd6d15bc8f4ccfb8a4650fab4cdebd', NULL, 'android-calendar.png', '', '', '/upload-files//images/info/android-calendar.png', NULL, '/upload-files//images/info/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/info/', 512, 512, 'info', NULL, NULL);
-INSERT INTO `images` VALUES ('b37286494d3d4761b669295dd2ddb8e1', NULL, 'android-checkmark.png', '', '', '/upload-files//images/ckEditor/android-checkmark.png', NULL, '/upload-files//images/ckEditor/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/ckEditor/', 0, 0, 'ckEditor', NULL, NULL);
-INSERT INTO `images` VALUES ('b372a6a0cbd3418b8442b9dd94091be2', NULL, 'android-alarm.png', '', '', '/upload-files//images/system/android-alarm.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 0, 0, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('b89982e7b75449e0a7383de055377ec5', NULL, 'android-settings.png', 'afdsfe', 'feadfsad', '/upload-files//images/system/android-settings.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 0, 0, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('bb12125063cc4fc5ae99769887888e3c', NULL, 'android-battery.png', '', '', '/upload-files//images/system/android-battery.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 0, 0, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('bbb1fa84ceae476e9ccce1da7ff73f0f', NULL, 'android-clock.png', '', '', '/upload-files//images/case/android-clock.png', NULL, '/upload-files//images/case/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/case/', 512, 512, 'case', NULL, NULL);
-INSERT INTO `images` VALUES ('bf23284219d841dd9d52898685c712a0', NULL, 'android-earth.png', '', '', '/upload-files//images/system/android-earth.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 0, 0, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('c260ab68a1164f15a85b56f63abda48f', NULL, 'android-remove.png', '', '', '/upload-files//images/other/android-remove.png', NULL, '/upload-files//images/other/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/other/', 512, 512, 'other', NULL, NULL);
-INSERT INTO `images` VALUES ('dec229f715dd422bafee6ea89c201b20', NULL, 'android-more.png', '', '', '/upload-files//images/ckEditor/android-more.png', NULL, '/upload-files//images/ckEditor/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/ckEditor/', 0, 0, 'ckEditor', NULL, NULL);
-INSERT INTO `images` VALUES ('e16aa2531cd4429fa6231d8c70c6e6f5', NULL, 'android-book.png', '', '', '/upload-files//images/system/android-book.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 0, 0, 'system', NULL, NULL);
-INSERT INTO `images` VALUES ('e441f59f46ad4b359de30229052be56c', NULL, 'qays.jpg', '', '', '/upload-files/images/ckEditor/qays.jpg', NULL, '/upload-files/images/ckEditor/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files/images/ckEditor/', 0, 0, 'ckEditor', NULL, NULL);
-INSERT INTO `images` VALUES ('ec71916f02794e7fb73ce463a605456f', NULL, 'android-sort.png', '', '', '/upload-files//images/info/android-sort.png', NULL, '/upload-files//images/info/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/info/', 0, 0, 'info', NULL, NULL);
-INSERT INTO `images` VALUES ('f28ed6581025418793fa11baf5b22ffe', NULL, 'android-share.png', '', '', '/upload-files//images/system/android-share.png', NULL, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', 0, 0, 'system', NULL, NULL);
+INSERT INTO `image` VALUES ('/image/1274933_qays.png', '1274933_qays.png', NULL, NULL, '/image/1274933_qays.png', '/image', 'E:/code/java/bms/target/classes/static/image', NULL, NULL, NULL, 'system', NULL, NULL);
+INSERT INTO `image` VALUES ('/image/abc.jpg', 'abc.jpg', NULL, NULL, '/image/abc.jpg', '/image', 'E:/code/java/bms/target/classes/static/image', NULL, NULL, NULL, 'system', NULL, 'da');
+INSERT INTO `image` VALUES ('/image/dd/abc.jpg', 'abc.jpg', NULL, NULL, '/image/dd/abc.jpg', '/image/dd', 'E:/code/java/bms/target/classes/static/image/dd', NULL, NULL, NULL, 'system', NULL, NULL);
+INSERT INTO `image` VALUES ('/uploads/default/qays.png', 'qays.png', '', '', '/uploads/default/qays.png', '/uploads/default', 'E:/code/temp/uploads/default', NULL, 0, 0, 'default', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for product
