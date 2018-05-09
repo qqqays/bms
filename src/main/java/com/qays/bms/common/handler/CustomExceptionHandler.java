@@ -25,7 +25,7 @@ public class CustomExceptionHandler {
             return O2JUtil.dataAndCode(ce.getRc());
         } else {
             log.error("[System exception] {}", e.getMessage());
-            return O2JUtil.dataAndCode(ReturnCode.UNKNOWN_ERROR);
+            return O2JUtil.dataAndCode(ReturnCode.UNKNOWN_ERROR,e.getMessage());
         }
 
     }

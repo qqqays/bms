@@ -124,4 +124,32 @@ public class ImgController implements AuxApi {
 
         return code(ReturnCode.SUCCESS);
     }
+
+    @DeleteMapping()
+    public String deleteImg(@RequestParam String id) {
+        Optional<ImgEntity> o = imgRepository.findById(id);
+
+        ImgEntity ie = o.get();
+
+        if(ie.getClass1().equals("system"))
+            throw new CustomException(ReturnCode.DELETE_SYSTEM_FILE);
+
+        try {
+            File targetFile = new File(ie.getAbsolutePath(), ie.getName());
+
+            if (targetFile.exists()) {
+                if (!targetFile.delete()) {
+                    throw new IOException("Deletes file failed");
+                }
+            }
+
+            imgRepository.delete(ie);
+            return code(ReturnCode.SUCCESS);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return code(ReturnCode.EXECUTE_ERROR);
+    }
 }
