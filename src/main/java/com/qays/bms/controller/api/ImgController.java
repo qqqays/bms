@@ -1,23 +1,15 @@
 package com.qays.bms.controller.api;
 
-import com.qays.bms.common.enums.ReturnCode;
-import com.qays.bms.common.exception.CustomException;
-import com.qays.bms.dao.ImgRepository;
-import com.qays.bms.domain.ImgEntity;
-import com.qays.bms.mapper.ImgMapper;
 import com.qays.bms.service.ImgService;
-import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.util.ClassUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.transaction.Transactional;
-import java.io.File;
-import java.io.IOException;
-import java.util.Optional;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Iterator;
 
 /**
  * Created by Q-ays
@@ -41,6 +33,11 @@ public class ImgController implements AuxApi {
             @RequestParam MultipartFile[] files
     ) {
         return imgService.postImg(alt, title, width, height, content, files);
+    }
+
+    @PostMapping("/ckEditor")
+    public void ckEditor(HttpServletRequest request, HttpServletResponse response) {
+        imgService.postImg4ck(request, response);
     }
 
     @PutMapping()
@@ -68,4 +65,13 @@ public class ImgController implements AuxApi {
         return imgService.acquireAllImg(pn, ps, s);
     }
 
+    @GetMapping("single")
+    public String gainImg(@RequestParam String id) {
+        return imgService.gainImgById(id);
+    }
+
+    @GetMapping("ck")
+    public void path4ck(HttpServletRequest request, HttpServletResponse response, @RequestParam("imgPath") String imgPath) {
+        imgService.path4ck(request,response,imgPath);
+    }
 }

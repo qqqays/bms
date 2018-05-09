@@ -19,7 +19,7 @@ public interface AuxService {
         return O2JUtil.dataAndCode(rc);
     }
 
-    default String code(ReturnCode rc, String msg) {
-        return O2JUtil.dataAndCode(rc, msg);
+    default String code(ReturnCode rc, Object o) {
+        return O2JUtil.dataAndCode(rc, o);
     }
 }

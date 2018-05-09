@@ -144,4 +144,22 @@ public class ImgEntity {
     public void setClass3(String class3) {
         this.class3 = class3;
     }
+
+    @Override
+    public String toString() {
+        return "ImgEntity{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", alt='" + alt + '\'' +
+                ", title='" + title + '\'' +
+                ", url='" + url + '\'' +
+                ", relativePath='" + relativePath + '\'' +
+                ", absolutePath='" + absolutePath + '\'' +
+                ", height=" + height +
+                ", width=" + width +
+                ", class1='" + class1 + '\'' +
+                ", class2='" + class2 + '\'' +
+                ", class3='" + class3 + '\'' +
+                '}';
+    }
 }

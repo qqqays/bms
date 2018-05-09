@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.qays.bms.common.enums.ReturnCode;
 import com.qays.bms.common.exception.CustomException;
+import com.qays.bms.common.util.SKTUtil;
 import com.qays.bms.dao.ImgRepository;
 import com.qays.bms.domain.ImgEntity;
 import com.qays.bms.mapper.ImgMapper;
@@ -12,11 +13,17 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.Optional;
 
 /**
@@ -26,7 +33,7 @@ import java.util.Optional;
  */
 @Service
 @Transactional
-public class ImgService implements AuxService{
+public class ImgService implements AuxService, SKTUtil {
 
     @Autowired
     private ImgMapper imgMapper;
@@ -68,7 +75,7 @@ public class ImgService implements AuxService{
         try {
             file.transferTo(new File(imgAbsolutionPath));
             imgRepository.save(ie);
-            return code(ReturnCode.SUCCESS,imgRelationPath);
+            return code(ReturnCode.SUCCESS, imgRelationPath);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -94,7 +101,38 @@ public class ImgService implements AuxService{
             e.printStackTrace();
         }
 
-        return code(ReturnCode.SUCCESS,jsonArray.toString());
+        return code(ReturnCode.SUCCESS, jsonArray);
+    }
+
+    public void postImg4ck(HttpServletRequest request, HttpServletResponse response) {
+
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
+
+        if (multipartResolver.isMultipart(request)) {
+
+            String typePath = jointPath("/uploads", "ckEditor");
+            String absolutionPath = jointPath(location, typePath);
+            String relationPath = jointPath("", typePath);
+
+            MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
+            Iterator<String> it = multiRequest.getFileNames();
+
+            try {
+                while (it.hasNext()) {
+                    MultipartFile file = multiRequest.getFile(it.next());
+
+                    addImg(relationPath, absolutionPath, "", "", 0, 0, "ckEditor", file);
+                    imgUrl4CK(request, response, jointPath(relationPath, file.getOriginalFilename()), false);
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void path4ck(HttpServletRequest request, HttpServletResponse response, String imgPath) {
+        imgUrl4CK(request, response, imgPath, true);
     }
 
     public String deleteImg(String id) {
@@ -143,6 +181,14 @@ public class ImgService implements AuxService{
 
         PageInfo<ImgEntity> page = new PageInfo<>(imgMapper.allImg(search));
 
-        return code(ReturnCode.SUCCESS, new JSONObject(page).toString());
+        return code(ReturnCode.SUCCESS, page);
+    }
+
+    public String gainImgById(String id) {
+        Optional<ImgEntity> o = imgRepository.findById(id);
+
+        ImgEntity ie = o.get();
+
+        return code(ReturnCode.SUCCESS, ie);
     }
 }
