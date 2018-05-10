@@ -10,29 +10,27 @@ import javax.persistence.Table;
 /**
  * Created by Q-ays
  * whosqays@gmail.com
- * 05-09-2018 17:11
+ * 05-10-2018 10:05
  */
 @Entity
 @Data
-@Table(name = "dic_item")
-public class ItemEntity {
-
+@Table(name = "seo")
+public class SeoEntity {
     @Id
-    private Integer id;
+    private String id;
 
     @Basic
-    private String typeId;
+    private String pageTitle;
 
     @Basic
-    private String name;
-
-    @Basic
-    private String value;
-
-    @Basic
-    private Integer sort;
+    private String keywords;
 
     @Basic
     private String description;
 
+    @Basic
+    private String author;
+
+    @Basic
+    private boolean state;
 }

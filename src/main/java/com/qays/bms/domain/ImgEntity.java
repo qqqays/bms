@@ -1,5 +1,7 @@
 package com.qays.bms.domain;
 
+import lombok.Data;
+
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,6 +13,7 @@ import javax.persistence.Table;
  * 05-05-2018 15:18
  */
 @Entity
+@Data
 @Table(name = "image")
 public class ImgEntity {
     @Id
@@ -49,117 +52,4 @@ public class ImgEntity {
     @Basic
     private String class3;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAlt() {
-        return alt;
-    }
-
-    public void setAlt(String alt) {
-        this.alt = alt;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getRelativePath() {
-        return relativePath;
-    }
-
-    public void setRelativePath(String relativePath) {
-        this.relativePath = relativePath;
-    }
-
-    public String getAbsolutePath() {
-        return absolutePath;
-    }
-
-    public void setAbsolutePath(String absolutePath) {
-        this.absolutePath = absolutePath;
-    }
-
-    public Integer getHeight() {
-        return height;
-    }
-
-    public void setHeight(Integer height) {
-        this.height = height;
-    }
-
-    public Integer getWidth() {
-        return width;
-    }
-
-    public void setWidth(Integer width) {
-        this.width = width;
-    }
-
-    public String getClass1() {
-        return class1;
-    }
-
-    public void setClass1(String class1) {
-        this.class1 = class1;
-    }
-
-    public String getClass2() {
-        return class2;
-    }
-
-    public void setClass2(String class2) {
-        this.class2 = class2;
-    }
-
-    public String getClass3() {
-        return class3;
-    }
-
-    public void setClass3(String class3) {
-        this.class3 = class3;
-    }
-
-    @Override
-    public String toString() {
-        return "ImgEntity{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", alt='" + alt + '\'' +
-                ", title='" + title + '\'' +
-                ", url='" + url + '\'' +
-                ", relativePath='" + relativePath + '\'' +
-                ", absolutePath='" + absolutePath + '\'' +
-                ", height=" + height +
-                ", width=" + width +
-                ", class1='" + class1 + '\'' +
-                ", class2='" + class2 + '\'' +
-                ", class3='" + class3 + '\'' +
-                '}';
-    }
 }

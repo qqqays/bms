@@ -10,29 +10,21 @@ import javax.persistence.Table;
 /**
  * Created by Q-ays
  * whosqays@gmail.com
- * 05-09-2018 17:11
+ * 05-10-2018 10:02
  */
 @Entity
 @Data
-@Table(name = "dic_item")
-public class ItemEntity {
-
+@Table(name = "dic_type")
+public class TypeEntity {
     @Id
-    private Integer id;
+    private String id;
 
     @Basic
-    private String typeId;
+    private String code;
 
     @Basic
     private String name;
 
     @Basic
-    private String value;
-
-    @Basic
-    private Integer sort;
-
-    @Basic
     private String description;
-
 }
