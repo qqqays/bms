@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @RestController
 @RequestMapping("/api/images")
-public class ImgController implements AuxApi {
+public class ImgController {
 
     @Autowired
     ImgService imgService;

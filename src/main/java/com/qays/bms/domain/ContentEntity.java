@@ -16,8 +16,8 @@ import java.sql.Timestamp;
  */
 @Entity
 @Data
-@Table(name = "global")
-public class globalEntity {
+@Table(name = "content")
+public class ContentEntity {
     @Id
     private String id;
 
